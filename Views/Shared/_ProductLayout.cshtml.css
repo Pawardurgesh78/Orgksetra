@@ -1,0 +1,128 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  word-break: break-all;
+}
+.navbar-org{
+    width:100%;
+    height: 5rem;
+    border: 1px solid black;
+    background-color: aliceblue;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    
+     
+}
+html{
+    width:100%;
+    min-height:100%;
+}
+html, body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100% !important;
+}
+    body > * {
+        flex-grow: 1;
+    }
+  body .container {
+      flex-grow: 1;
+  }
+
+a {
+  color: #0077cc;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+  
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+.footer {
+    background-color: black;
+    color: white;
+    position: relative;
+    width:100%;
+    bottom: 0;
+    line-height: 30px;
+    white-space: nowrap;
+}
+.logo{
+    float:left;
+    height:100%;
+    width:15rem;
+    object-fit:cover;
+    object-position:top
+}
+#logoutbtn {
+    padding-bottom: 1px;
+}
+.footer-ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+.navbar-org p {
+    border-radius: 25px !important;
+    height: 50%;
+    width: 40%;
+    display: flex;
+}
+.cart-logout{
+   width: 10rem !important;
+}
+.searchbox {
+    margin-right: 10px;
+    border-radius: 25px !important;
+}
+
+.foot-address {
+    list-style-type: none;
+    float: left;
+    margin-top: 20px;
+}
+
+.footer div {
+    width: 100%;
+    height: auto;
+    text-align: center
+}
+
+.foot-address p {
+    font-weight: 700;
+}
+
+.foot-address a {
+    display: block;
+}
+
+.copyrights {
+    margin-top: 80px;
+}
+
+

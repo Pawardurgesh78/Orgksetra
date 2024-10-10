@@ -1,0 +1,142 @@
+﻿@model Customer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orgkshetra</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OrgkSetra.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <header>
+       
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo"src="../Assets/OrgLogo.png" width="25%" height="auto" alt="logo" /></a>
+               
+                </div><hr />
+                <div>
+                    <ul class="nav">
+                        <li class="nav-items">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-items">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Privacy">Contact Us</a>
+                        </li>
+                          <li class="nav-items">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Create">About Us</a>
+                        </li>
+                <li class="nav-items">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Our Values</a>
+                </li>
+               
+                     <li class="customerloginbtn">
+                     
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Login</button>
+                     <a type="submit" class="btn btn-success" asp-action="Create" asp-controller="Customers">Register</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Det"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                 
+                    
+
+                </li>
+                    </ul>
+                </div>
+
+    </header>
+
+<!-- Modal -->
+<form method="post">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="CustomerLogin">
+                    <h5 class="modal-title" id="CustomerLogin">Customer Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+           
+                <div class="modal-body">
+                     <input type="email" class="form-control" placeholder="UserName" asp-for="Email" required/><br />
+                     <input type="password" class="form-control" placeholder="Password" asp-for="Passward" required/>
+                </div>
+         
+                <div class="mod-footer">
+                    <a class="modallink"asp-action="" asp-controller="">forgot password?</a>
+                <button type="submit" class="btn btn-dark" asp-controller="Customers" asp-action="CustomerLogin" >Login</button>
+                </div>
+         
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Notifications" />
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="footer">
+    <div>
+        <ul class="footer-ul">
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            </ul>
+    </div>
+        <div class="container copyrights">
+            <div style="text-align:center; bottom:0;">Designed and Developed by 	&regPawar Enterprises
+               <p> &copy; 2024 - OrgkSetra -
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                
+            </div>
+         
+       
+        </div>
+    </footer>
+    <script>
+        function logout() {
+            // Perform logout actions (e.g., clearing session storage)
+            sessionStorage.clear(); // or localStorage.clear()
+
+            // Redirect to login page
+            window.location.href = 'https://localhost:7240/';
+
+            // Disable back button
+            history.pushState(null, null, window.location.href);
+            window.onpopstate = function () {
+                history.pushState(null, null, window.location.href);
+            };
+        }
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

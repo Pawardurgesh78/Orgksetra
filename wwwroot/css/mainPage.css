@@ -1,0 +1,99 @@
+﻿
+html, body {
+    min-height: 100% !important;
+    width: 100% !important;
+}
+
+h1 {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-weight: 400;
+}
+
+.paragraphsec {
+    text-align: center;
+    padding-left: 5rem;
+    background-color: aliceblue;
+}
+
+.bodysection {
+    height: 400px;
+    width: 100%;
+    background-image: url("../Assets/OrganicFarm.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+h1 {
+    padding-top: 60px;
+}
+
+.cards {
+    margin: auto;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card1 {
+    height: 380px;
+    width: 370px;
+    box-shadow: 10px 5px 15px 5px #737373;
+    margin: 2rem 0.5rem 0rem 3rem;
+    display: flex;
+}
+
+.cardcontent {
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    border: 1px solid black;
+    display: inline-block;
+    object-fit: cover;
+    margin: 0rem 0rem 0rem 0rem;
+    background-color: aliceblue;
+}
+
+.img-food {
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.card-desc p {
+    margin: 15px 0px 0px 15px;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.card-desc button {
+    overflow: hidden;
+    float: inline-end;
+    margin-top: 12px;
+}
+
+.card-desc {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: auto;
+}
+
+.card1:hover {
+    border: 5px groove aliceblue;
+    animation: mymove 0.5s linear;
+}
+
+@keyframes mymove {
+    50% {
+        transform: rotate(30deg);
+    }
+}

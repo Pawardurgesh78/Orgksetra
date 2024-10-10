@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orgkshetra</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+   @*  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/OrgkSetra.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="../CSS/ProductDetails.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <header> 
+            <div class="navbar-org">
+            <a asp-action="GetItems" asp-controller="Cust_Item"><img class="logo" src="../Assets/OrgLogo.png" alt="logo" /></a>
+            </p>
+            <p>
+               <input type="text" class="form-control searchbox" placeholder="Search" />
+                <a class="btn btn-outline-success">Search</a>
+            </p>
+              <p class="cart-logout">
+                <a type="submit" class="text-dark btn btn-outline-danger" id="logoutbtn"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <a class="nav-link cart text-dark" asp-controller="Customers" asp-action="Det"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+            </p>
+              </div>
+
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Notifications" />
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="footer">
+    <div>
+        <ul class="footer-ul">
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            <li class="foot-address">
+                <p>  Address </p>
+                <a>26B Patanjali Nagar</a>
+                <a>Taluka : Shahada</a>
+                <a>District : Nandurbar</a>
+            </li>
+            </ul>
+    </div>
+        <div class="container copyrights">
+            <div style="text-align:center; bottom:0;">Designed and Developed by 	&regPawar Enterprises
+               <p> &copy; 2024 - OrgkSetra -
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+         
+       
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#logoutbtn").click(function () {
+                $.ajax({
+                    url: '@Url.Action("CustomerLogout", "Customers")', // Specify the action and controller
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            // Show success message
+                            logout();
+                            toastr.success(response.message);
+                        } else {
+                            // Show error message
+                            toastr.error("An error occurred.");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle AJAX error
+                        toastr.error("An error occurred: " + error);
+                    }
+                });
+            })
+        });
+        function logout() {
+            // Perform logout actions (e.g., clearing session storage)
+            sessionStorage.clear(); // or localStorage.clear()
+
+            // Redirect to login page
+            window.location.href = 'https://localhost:7240/Home';
+
+            // Disable back button
+            history.pushState(null, null, window.location.href);
+            window.onpopstate = function () {
+                history.pushState(null, null, window.location.href);
+            };
+            windows.histry
+        }
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
