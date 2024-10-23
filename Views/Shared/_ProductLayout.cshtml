@@ -4,30 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orgkshetra</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
    @*  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/OrgkSetra.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="../CSS/ProductDetails.css" />
+   @*  <link rel="stylesheet" href="~/Assets//ProductCss/ProductDetails.css" /> *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
-    <header> 
+    <header>    
             <div class="navbar-org">
-            <a asp-action="GetItems" asp-controller="Cust_Item"><img class="logo" src="../Assets/OrgLogo.png" alt="logo" /></a>
-            </p>
+            <a asp-action="GetItems" asp-controller="Cust_Item"><img class="logo" width="230rem" src="~/Assets/OrgLogo.png" alt="logo" /></a>
             <p>
                <input type="text" class="form-control searchbox" placeholder="Search" />
                 <a class="btn btn-outline-success">Search</a>
             </p>
               <p class="cart-logout">
-                <a type="submit" class="text-dark btn btn-outline-danger" id="logoutbtn"><i class="fa-solid fa-right-from-bracket"></i></a>
-            <a class="nav-link cart text-dark" asp-controller="Customers" asp-action="Det"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                <a class="text-dark btn btn-outline-danger" id="logoutbtn"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <a class="nav-link cart text-dark" asp-controller="Cart" asp-action="View_Cart"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
             </p>
               </div>
 
     </header>
-
     <div class="container">
         <main role="main" class="pb-3">
             <partial name="_Notifications" />
@@ -111,9 +112,7 @@
             windows.histry
         }
     </script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+  
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

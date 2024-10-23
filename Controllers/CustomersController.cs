@@ -183,8 +183,9 @@ namespace OrgkSetra.Controllers
                     {
                         if (UserSession == cs.Email && PassSession == cs.Passward)
                         {
-                            
-                            return RedirectToAction("Cust_Login", "/Cust_Item");
+                        HttpContext.Session.SetString("CustomerId", cs.CustomerId.ToString());
+                        HttpContext.Session.SetString("CustomerName", cs.FirstName);
+                        return RedirectToAction("Cust_Login", "/Cust_Item");
                         }
                       
                     }
@@ -202,6 +203,7 @@ namespace OrgkSetra.Controllers
             HttpContext.Session.Clear();
             return Json(new { success = true, message="Logout Successful"});
         }
+       
         private bool CustomerExists(int id)
         {
             return _context.Customers.Any(e => e.CustomerId == id);

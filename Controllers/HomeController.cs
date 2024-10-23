@@ -17,6 +17,8 @@ namespace OrgkSetra.Controllers
 
         public async Task<IActionResult> Index()
         {
+            //Setting for Guest user but implementation will do later
+            HttpContext.Session.SetString("CustomerId", CustomerMode.Guest.ToString());
             return View();
         }
 

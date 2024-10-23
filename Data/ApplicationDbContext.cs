@@ -11,4 +11,16 @@ namespace OrgkSetra.Data
             modelBuilder.Entity<Customer>(entity => { entity.HasKey(k => k.CustomerId); });
         }
     }
+    public class CartDbContext : DbContext 
+    {
+        public CartDbContext(DbContextOptions<CartDbContext> options) : base(options) { }
+        public DbSet<Cart_Session> Cart_Session {  get; set; }
+        public DbSet<CartItem> CartItems { get;  set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CartItem>().HasOne(b => b.Session)
+                                           .WithMany(b => b.cartItems)
+                                           .HasForeignKey(b => b.SessionId);
+        }
+    }
 }

@@ -6,7 +6,7 @@ a.navbar-brand {
   word-break: break-all;
 }
 .navbar-org{
-    width:100%;
+    width:auto;
     height: 5rem;
     border: 1px solid black;
     background-color: aliceblue;
@@ -20,18 +20,21 @@ a.navbar-brand {
 html{
     width:100%;
     min-height:100%;
+    margin:0px;
+    padding:0px;
 }
-html, body {
+body {
     display: flex;
     flex-direction: column;
     min-height: 100% !important;
 }
     body > * {
-        flex-grow: 1;
+        flex-grow: 1 !important;
+       
     }
-  body .container {
-      flex-grow: 1;
-  }
+    body .container {
+        flex-grow: 1 !important; 
+    }
 
 a {
   color: #0077cc;
@@ -48,7 +51,6 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -70,15 +72,17 @@ button.accept-policy {
     position: relative;
     width:100%;
     bottom: 0;
+    left: 0;
     line-height: 30px;
     white-space: nowrap;
 }
-.logo{
-    float:left;
-    height:100%;
-    width:15rem;
-    object-fit:cover;
-    object-position:top
+
+.logo {
+    float: left;
+    height: 100% !important;
+    width: 35rem !important;
+    object-fit: cover;
+    object-position: top
 }
 #logoutbtn {
     padding-bottom: 1px;
@@ -124,5 +128,9 @@ button.accept-policy {
 .copyrights {
     margin-top: 80px;
 }
+@media (max-width: 600px) {
+    
+}
+
 
 

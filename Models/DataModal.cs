@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Orgksetra.ViewModel;
 
 namespace OrgkSetra.Models
 {
@@ -31,7 +32,7 @@ namespace OrgkSetra.Models
             MobileNo = "";
             Passward = "";
         }
-      
+
     }
     [NotMapped]
     public class Item
@@ -45,16 +46,11 @@ namespace OrgkSetra.Models
         public decimal ItemQuantity { get; set; }
         public string? ItemUnit { get; set; } = string.Empty;
         public int ItemStatus { get; set; }
-        public string ItemImgIds { get; set; }
+        public int ImageId { get; set; }
         [NotMapped]
         public IFormFile? Img { get; set; }
         [NotMapped]
-        public Image? images { get; set; }
-        public Item()
-        {
-            ItemImgIds = string.Empty;
-            images = new Image();
-        }
+        public virtual Image? images { get; set; }
     }
     [NotMapped]
     public class Image
@@ -66,4 +62,56 @@ namespace OrgkSetra.Models
         public string? ContentType { get; set; }
         public int? ItemId { get; set; }
     }
+    public class Cart_Session
+    {
+        [Key]
+        public int SessionId { get; set; }
+        public int CustomerId { get; set; }
+        public decimal Total { get; set; }
+        public DateTime CreateAt { get; set; }
+        public DateTime ModifiedAt { get; set; }
+        public Cart_Session()
+        {
+            CustomerId = 0;
+            Total = 0;
+        }
+        public ICollection<CartItem>? cartItems { get; set; }
+    }
+    public class CartItem
+    {
+        [Key]
+        public int CartId { get; set; }
+        public int? SessionId { get; set; }
+        public virtual Cart_Session Session { get; set; }
+        public int ItemId { get; set; } 
+        public decimal Quantity { get; set; }
+        public int? OrderStatus { get; set; }
+        [NotMapped]
+        public virtual ItemDetails? ItemDetails { get; set; } = new ItemDetails();
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
+      public CartItem()
+        {
+            SessionId = 0;
+            ItemId = 0;
+            Quantity = 1;
+            OrderStatus = 0;
+        }
+    }
+    public static class OrderStatus
+    {
+        public static int CartIsEmpty  = 0;
+        public static int OrderPending  = 1;
+        public static int OrderConfirmed  = 2;
+        public static int OrderCompleted  = 3;
+        public static int OrderCanceled  = 4;
+        public static int OrderReturned  = 5;
+
+    }
+    public static class CustomerMode
+    {
+        public static int Guest = -1;
+       public static int Customer = 1;
+    }
 }
+

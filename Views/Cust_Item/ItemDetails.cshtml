@@ -1,0 +1,39 @@
+﻿@using Orgksetra.ViewModel
+@model ItemDetails
+@{
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+
+    <html>
+        <head>
+      <link rel="stylesheet" href="~/css/itemDetails.css" type="text/css" />
+      <link rel="stylesheet" href="~/css/mainPage.css" type="text/css" />
+        </head>
+        <body>
+                <div class="row col-md-12">
+                <div class="col-md-6">
+            <div class="imagediv"> 
+                @if (Model.ImageData != null)
+                {
+                    <img src="data:image/png;base64,@Convert.ToBase64String(Model.ImageData)" alt="Model.ItemName" class="img-food" /><br />
+                    
+                }else
+                {   
+                    <img src="" class="img-food" alt="Model.ItemName" />
+                }
+            </div>
+            </div>
+            <div class="col-md-6">
+       
+            <h2 id="itemname">@Model.ItemName</h2>
+            <p class="itemdesc"><b>Price:</b> ₹@Model.ItemPrice per @Model.ItemUnit</p>
+            <p class="itemdesc"><b>Description: </b> @Model.ItemDescription</p>
+            <p class="itemdesc"><b>Item Type: </b> @Model.ItemType</p>
+            <div class="container">
+                <a class="btn btn-success Updatebtn" href="@Url.Action("Add_Cart", "Cart", new{id = @Model.ItemId})">Add To <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+        </div>
+     
+        </body>
+    </html>

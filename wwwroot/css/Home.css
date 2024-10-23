@@ -56,7 +56,7 @@ h1{
 }
 .img-food {
     height: 80%;
-    width: 100%;
+    width: 23rem;
     object-fit: cover;
     object-position: center;
     background-repeat: no-repeat;
@@ -86,5 +86,17 @@ h1{
 @keyframes mymove {
     50% {
         transform: rotate(30deg);
+    }
+}
+
+
+@media(max-width:600){
+    .bodysection {
+        height: 250px;
+        width: 100%;
+        background-image: url("../Assets/OrganicFarm.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 10px;
     }
 }
