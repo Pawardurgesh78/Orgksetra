@@ -5,9 +5,11 @@ using Orgksetra.ViewModel;
 using OrgkSetra.Data;
 using OrgkSetra.Models;
 using System.Transactions;
+using System.Web.Http;
 
 namespace OrgkSetra.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _context;
