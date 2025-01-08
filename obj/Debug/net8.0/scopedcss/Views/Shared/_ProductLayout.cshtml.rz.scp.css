@@ -6,7 +6,7 @@ a.navbar-brand[b-hjcaqpret8] {
   word-break: break-all;
 }
 .navbar-org[b-hjcaqpret8]{
-    width:100%;
+    width:auto;
     height: 5rem;
     border: 1px solid black;
     background-color: aliceblue;
@@ -20,18 +20,21 @@ a.navbar-brand[b-hjcaqpret8] {
 html[b-hjcaqpret8]{
     width:100%;
     min-height:100%;
+    margin:0px;
+    padding:0px;
 }
-html[b-hjcaqpret8], body[b-hjcaqpret8] {
+body[b-hjcaqpret8] {
     display: flex;
     flex-direction: column;
     min-height: 100% !important;
 }
     body > *[b-hjcaqpret8] {
-        flex-grow: 1;
+        flex-grow: 1 !important;
+       
     }
-  body .container[b-hjcaqpret8] {
-      flex-grow: 1;
-  }
+    body .container[b-hjcaqpret8] {
+        flex-grow: 1 !important; 
+    }
 
 a[b-hjcaqpret8] {
   color: #0077cc;
@@ -48,7 +51,6 @@ a[b-hjcaqpret8] {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
 .border-top[b-hjcaqpret8] {
   border-top: 1px solid #e5e5e5;
 }
@@ -70,15 +72,17 @@ button.accept-policy[b-hjcaqpret8] {
     position: relative;
     width:100%;
     bottom: 0;
+    left: 0;
     line-height: 30px;
     white-space: nowrap;
 }
-.logo[b-hjcaqpret8]{
-    float:left;
-    height:100%;
-    width:15rem;
-    object-fit:cover;
-    object-position:top
+
+.logo[b-hjcaqpret8] {
+    float: left;
+    height: 100% !important;
+    width: 35rem !important;
+    object-fit: cover;
+    object-position: top
 }
 #logoutbtn[b-hjcaqpret8] {
     padding-bottom: 1px;
@@ -124,5 +128,9 @@ button.accept-policy[b-hjcaqpret8] {
 .copyrights[b-hjcaqpret8] {
     margin-top: 80px;
 }
+@media (max-width: 600px) {
+    
+}
+
 
 

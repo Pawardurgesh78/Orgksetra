@@ -10,6 +10,10 @@ D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\OrgkSetra.pdb
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Azure.Core.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Azure.Identity.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Humanizer.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Web.Cors.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Net.Http.Formatting.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Web.Http.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Web.Http.Cors.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Build.dll
@@ -32,6 +36,8 @@ D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -53,6 +59,7 @@ D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.VisualStudio.Web.Cod
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\NuGet.Common.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\NuGet.Configuration.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll
@@ -70,13 +77,13 @@ D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Composition.Runtime.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Composition.TypedParts.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Drawing.Common.dll
+D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Formats.Asn1.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Memory.Data.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Runtime.Caching.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Text.Json.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\System.Windows.Extensions.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\af\Humanizer.resources.dll
 D:\OrgKsetra\OrgkSetra\OrgkSetra\bin\Debug\net8.0\ar\Humanizer.resources.dll
@@ -236,6 +243,7 @@ D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\OrgkSetra.csproj.CoreCompileIn
 D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\OrgkSetra.MvcApplicationPartsAssemblyInfo.cache
 D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\OrgkSetra.RazorAssemblyInfo.cache
 D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\OrgkSetra.RazorAssemblyInfo.cs
+D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\OrgkSetra.sourcelink.json
 D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\staticwebassets.build.json
 D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\staticwebassets.development.json
 D:\OrgKsetra\OrgkSetra\OrgkSetra\obj\Debug\net8.0\staticwebassets\msbuild.OrgkSetra.Microsoft.AspNetCore.StaticWebAssets.props

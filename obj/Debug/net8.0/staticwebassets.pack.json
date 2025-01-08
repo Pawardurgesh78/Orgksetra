@@ -21,8 +21,16 @@
       "PackagePath": "staticwebassets\\Assets\\Product\\ManWithWatermelon.jpg"
     },
     {
+      "Id": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\Cart.css",
+      "PackagePath": "staticwebassets\\css\\Cart.css"
+    },
+    {
       "Id": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\Home.css",
       "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
+      "Id": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\itemDetails.css",
+      "PackagePath": "staticwebassets\\css\\itemDetails.css"
     },
     {
       "Id": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\mainPage.css",

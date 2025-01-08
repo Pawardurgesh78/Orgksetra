@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrgkSetra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+894e06c44429386fe8e3229fe00fa9ccf9bb49b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrgkSetra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrgkSetra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

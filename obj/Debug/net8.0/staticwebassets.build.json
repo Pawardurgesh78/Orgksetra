@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Hj7rTAnUA5hSG9PNqVmkDgIxkONZu74MriiGXAHO0cI=",
+  "Hash": "7kDg8XX0lOC2FVHus/FWbnDz2RT167ldKQ2P/hCHmYY=",
   "Source": "OrgkSetra",
   "BasePath": "_content/OrgkSetra",
   "Mode": "Default",
@@ -131,6 +131,25 @@
       "OriginalItemSpec": "wwwroot\\Assets\\ProductCss\\ProductDetails.css"
     },
     {
+      "Identity": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\Cart.css",
+      "SourceId": "OrgkSetra",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\",
+      "BasePath": "_content/OrgkSetra",
+      "RelativePath": "css/Cart.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Cart.css"
+    },
+    {
       "Identity": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\Home.css",
       "SourceId": "OrgkSetra",
       "SourceType": "Discovered",
@@ -148,6 +167,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Home.css"
+    },
+    {
+      "Identity": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\itemDetails.css",
+      "SourceId": "OrgkSetra",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\",
+      "BasePath": "_content/OrgkSetra",
+      "RelativePath": "css/itemDetails.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\itemDetails.css"
     },
     {
       "Identity": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\css\\mainPage.css",
