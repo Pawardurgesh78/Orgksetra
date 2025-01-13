@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7kDg8XX0lOC2FVHus/FWbnDz2RT167ldKQ2P/hCHmYY=",
+  "Hash": "Z+46m6bZRw79eiUf00lKwTeF964fzyDNukUnfn1+G3c=",
   "Source": "OrgkSetra",
   "BasePath": "_content/OrgkSetra",
   "Mode": "Default",
@@ -262,6 +262,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\ManWithWatermelon.jpg"
+    },
+    {
+      "Identity": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\js\\Add_Cart.js",
+      "SourceId": "OrgkSetra",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\",
+      "BasePath": "_content/OrgkSetra",
+      "RelativePath": "js/Add_Cart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Add_Cart.js"
     },
     {
       "Identity": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\js\\site.js",

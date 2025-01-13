@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\images\\ManWithWatermelon.jpg"
     },
     {
+      "Id": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\js\\Add_Cart.js",
+      "PackagePath": "staticwebassets\\js\\Add_Cart.js"
+    },
+    {
       "Id": "D:\\OrgKsetra\\OrgkSetra\\OrgkSetra\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

@@ -3,8 +3,8 @@
     flex-direction: column;
     min-height: 100vh;
     max-height: 100%;
-    
 }
+
 .itembox {
     height: 6rem;
     width: 100%;
@@ -18,10 +18,11 @@
     margin-top: 5%;
     box-shadow: 5px 5px #888888;
 }
-.cart{
-    margin-bottom:100%; 
 
+.cart {
+    margin-bottom: 100%;
 }
+
 .imagediv {
     height: 6rem;
     width: 6rem;
@@ -30,6 +31,7 @@
     background-repeat: no-repeat;
     overflow: hidden;
 }
+
 .img-food {
     height: 100% !important;
     width: auto;
@@ -38,25 +40,47 @@
     background-repeat: no-repeat;
     overflow: hidden;
 }
-#qty{
-    width:20% !important;
-    display:flex;
-}
-#v-border{
-    height:100%;
-    width:1%;
-    margin-top:10%;
-    border-left:1px solid green;
-    position:absolute;
-}
-.ProceedNext{
-    height:14rem;
-    width:100%;
-    border:1px solid black;
-    margin-top:20%;
 
+#qty {
+    width: 10% !important;
+    display: block;
 }
-#checkoutdtls p{
-       margin-top:3rem;
-       font-size:30px;
+
+#v-border {
+    height: 100%;
+    width: 1%;
+    margin-top: 10%;
+    border-left: 1px solid green;
+    position: absolute;
+}
+
+.ProceedNext {
+    height: auto;
+    width: 100%;
+    border: 1px solid black;
+    background-color: azure;
+    margin-top: 10%;
+}
+
+#checkoutdtls #total {
+    margin-top: 3rem;
+    font-size: 30px;
+}
+
+.deliveryadd {
+    border: 1px solid black;
+    margin-top: 10%;
+    text-align: start;
+    margin: 1%;
+    margin-top: 5%;
+    padding: 2%;
+}
+
+.deliverybox {
+    width: 100%;
+    height: 15rem;
+    margin-top: 0.5rem;
+    background-color: aliceblue;
+    display: inline-block;
+    overflow: scroll;
 }
