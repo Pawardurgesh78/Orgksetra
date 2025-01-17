@@ -64,11 +64,11 @@
 
 #checkoutdtls #total {
     margin-top: 3rem;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .deliveryadd {
-    border: 1px solid black;
+    border: 1px solid grey;
     margin-top: 10%;
     text-align: start;
     margin: 1%;
@@ -83,4 +83,11 @@
     background-color: aliceblue;
     display: inline-block;
     overflow: scroll;
+}
+.plusMinus{                    
+    border: 1px solid grey;
+    height:10px;
+    width:10px;
+    cursor:pointer;
+    color: black;
 }

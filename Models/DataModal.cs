@@ -77,6 +77,22 @@ namespace OrgkSetra.Models
         }
         public ICollection<CartItem>? cartItems { get; set; }
     }
+    public class DeliveryAddress
+    {
+        [Key]
+        public int DeliveryId { get; set; }
+        public int SessionId { get; set; }
+        public string Address { get; set; }
+        public string MobileNo { get; set; }
+        public string Pincode { get; set; }
+        public DeliveryAddress()
+        {
+            Address = string.Empty;
+            MobileNo = string.Empty;
+            Pincode = string.Empty;
+        }
+
+    }
     public class CartItem
     {
         [Key]

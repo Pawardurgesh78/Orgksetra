@@ -125,7 +125,7 @@
                     <div class="card-desc">
                         <p>Price: @item.ItemPrice </p>
                         <h6>@item.ItemName</h6>
-                        <a class="btn btn-outline-success mt-3" asp-action="Add_Cart" asp-controller="Cart" asp-route-id="@item.ItemId">Add Cart</a>
+                            <a class="btn btn-outline-success mt-3" id="AddCart_btn" onclick="AddToCart(event,@item.ItemId)">Add Cart</a>
                     </div>
                 </div>
 
@@ -135,3 +135,25 @@
     </div>
 </body>
 </html>
+<script>
+    function AddToCart(e,id) {
+        $.ajax({
+            url: '/Cart/Add_Cart', // Example API URL
+            type: 'Post',  // Request type (GET, POST, etc.)
+            data: {
+                id: id,
+            },
+            dataType: 'json',  // Expected response type
+            success: function (response) {
+                $(e.target).text('Added');
+                $(e.target).attr('disabled', true);
+            },
+            error: function (xhr, status, error) {
+                // Handle any errors that occur during the request
+                console.error("Error: " + error);
+                alert("Something went wrong!");
+            }
+
+        });
+    }
+</script>

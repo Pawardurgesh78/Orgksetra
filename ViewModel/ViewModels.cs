@@ -14,7 +14,7 @@ namespace Orgksetra.ViewModel
         [RegularExpression(@"^[0-9.]+$", ErrorMessage = "Price must be in number")]
         public decimal ItemPrice { get; set; }
         [RegularExpression(@"^[0-9.]+$", ErrorMessage = "Quantity must be in number")]
-        public decimal AvailableItemQuantity { get; set; }
+        public decimal ItemQuantity { get; set; }
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Unit must be in alphabate")]
         public string? ItemUnit { get; set; } = string.Empty;
         public int ItemStatus { get; set; }

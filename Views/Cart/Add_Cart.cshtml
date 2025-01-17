@@ -1,5 +1,5 @@
 ﻿@using Orgksetra.ViewModel
-@model IEnumerable<CartItem> 
+@model IEnumerable<CartItem>
 @{
     Layout = "~/Views/Shared/_ProductLayout.cshtml";
 }
@@ -7,17 +7,20 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/Cart.css" type="text/css" />
+    <script src="~/js/Add_Cart.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="row cart col-md-12">
         @if (Model != null && Model.Count() != 0)
         {
             <div class="col-md-7">
-
+                <div id="getItems">
                 @foreach (var item in Model)
                 {
                     if (item.ItemDetails != null)
                     {
+                        
                         <div class="itembox">
                             <div class="imagediv">
                                 @if (item.ItemDetails.ImageData != null)
@@ -30,15 +33,18 @@
                                 }
                             </div>
                             <p>₹@item.ItemDetails.ItemPrice</p>
-                            <p id="qty"> <input type="text" value="1" class="form-control" pattern="^[0-9]+" required />&nbsp; <b>Qty</b></p>
-                            <p> Item Catagory: @item.ItemDetails.ItemType</p>
-                            <a asp-action="Delete_Item" asp-route-id="@item.CartId" asp-controller="Cart">
+                            @*                             <a href="#" id="Addqty" class="plusMinus" onclick="addqty()">+</a>
+                    *@                            <p id="qty"> <input type="number" value="@Convert.ToInt32(@item.Quantity)" id="qtyinp" onchange="qtychangedValidation(event, @item.ItemDetails.ItemQuantity),onqtychange(event, @item.ItemId)" onkeydown="isNumberKey(event)" class="form-control" pattern="^[0-9]+" required />&nbsp; <b>Qty</b></p>
+                            @*                             <a href="#" onclick="reduceQty()" class="plusMinus" id="Reduceqty">-</a>
+                *@                            <p> Item Catagory: @item.ItemDetails.ItemType</p>
+                                <a href="@Url.Action("Delete_Item","Cart", new {id = item.CartId})" class="cursor-pointer">
                                 <i class="fa-solid fa-trash text-dark text-hover-danger"></i>
                             </a>
                         </div>
+                     
                     }
                 }
-
+                </div>
             </div>
 
             <div class="col-md-5 container">
@@ -46,8 +52,13 @@
             </div> *@
                 <div class="ProceedNext text-center">
                     <div id="checkoutdtls">
-                        <p><b>Total:</b> ₹@ViewBag.Total</p><br />
-                        <a class="btn btn-success">Check Out Items</a>
+                        <p id="total"><b>Total:</b> ₹<label id="totalprice_lbl"></label></p><br />
+                        <button class="btn btn-success" id="checkoutItem_btn">Check Out Items</button>
+                        <button class="btn btn-outline-success" id='AddDeliveryAddressM_btn' data-bs-toggle="modal" data-bs-target="#DeliveryAddressModal">Add Delivery Address</button>
+                        <label class="container fw-bold text-center mt-3">Select Delivery Address</label>
+                    </div>
+                    <hr />
+                    <div class="deliverybox">
                     </div>
                 </div>
             </div>
@@ -57,5 +68,102 @@
             <h2 class="container mt-3">Your Cart is Empty</h2>
         }
     </div>
+    <!-- Delivery Address Modal -->
+    <div class="modal fade" id="DeliveryAddressModal" tabindex="-1" role="dialog" aria-labelledby="DeliveryAddress" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Delivery Address</h5>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        Delivery Address
+                        <input type="text" id="deliveryaddress_txt" class="form-control" placeholder="Delivery Address" required />
+                    </div>
+                    <div class="form-group">
+                        Pin
+                        <input type="text" id="pin_txt" class="form-control" placeholder="Pin" required />
+                    </div>
+                    <div class="form-group">
+                        Mobile No
+                        <input type="text" id="mobileNo_txt" class="form-control" placeholder="Mobile No." required />
+                    </div>
+
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-success" onclick="AddDeliveryAddress()">Add</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<script>
+
+    $('#totalprice_lbl').text('@ViewBag.Total');
+
+    loadData();
+    function loadData() {
+        axios.get('/Cart/GetDeliveryAddress')
+
+            .then(function (response) {
+                if (response.data.deliveryAddress.length < 1) {
+                    $('#checkoutItem_btn').attr('disabled', true)
+                } else {
+                    var new_row = '';
+                    //Getting all delivery addresses
+                    response.data.deliveryAddress.forEach(i => {
+                        new_row += ' <div class="deliveryadd">';
+                        new_row += `<input type="radio" id="SelectedDeliveryId" value=${i.deliveryId} name="DeliveryId"/><br />`;
+                        new_row += '  <b>  Address - </b>';
+                        new_row += `<label id="delivery_add">${i.address}</label><br />`;
+                        new_row += '<b>  Mobile No. - </b>';
+                        new_row += `  <label id="mobile_no">${i.mobileNo}</label>`
+                        new_row += '</div>'
+
+                    })
+                    $('.deliverybox').html(new_row);
+                    $('#checkoutItem_btn').attr('disabled', false)
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+// On checkout button click 
+    const button = document.getElementById("checkoutItem_btn");
+    button.addEventListener('click', function () {
+        let deliveryId = 0;
+        //checking for delivery address is selected or not
+        var delivery = document.getElementsByName("DeliveryId");
+        let radiovalue = 0;
+        
+        delivery.forEach(e => {
+            if (e.checked) {
+                radiovalue = 1;
+                deliveryId = e.value;
+              
+            }
+        }
+        )
+        if (radiovalue == 0) {
+            alert("please select delivery address")
+        }else{
+            if (deliveryId > 0) {
+              //   axios.get('/Cart/CheckOutItems')
+            }
+        }
+        //End Delivery Address validation
+
+        
+    });
+</script>

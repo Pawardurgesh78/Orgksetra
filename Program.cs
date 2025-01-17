@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OrgkSetra;
 using OrgkSetra.Data;
+using OrgkSetra.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<ApiService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<CartDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CartConnection")));
+builder.Services.AddScoped<ICartItemRepository, ManagerCartItem>();
+builder.Services.AddScoped<ManagerCartItem>();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30); // Set timeout

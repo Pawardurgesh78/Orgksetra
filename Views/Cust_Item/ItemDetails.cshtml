@@ -30,10 +30,32 @@
             <p class="itemdesc"><b>Description: </b> @Model.ItemDescription</p>
             <p class="itemdesc"><b>Item Type: </b> @Model.ItemType</p>
             <div class="container">
-                <a class="btn btn-success Updatebtn" href="@Url.Action("Add_Cart", "Cart", new{id = @Model.ItemId})">Add To <i class="fa-solid fa-cart-shopping"></i></a>
+                <a class="btn btn-success Updatebtn" onclick="AddToCart(event,@Model.ItemId)" >Add To <i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
         </div>
      
         </body>
     </html>
+    <script>
+    function AddToCart(e, id) {
+        $.ajax({
+            url: '/Cart/Add_Cart', // Example API URL
+            type: 'Post',  // Request type (GET, POST, etc.)
+            data: {
+                id: id,
+            },
+            dataType: 'json',  // Expected response type
+            success: function (response) {
+                $(e.target).text('Added');
+                $(e.target).attr('disabled', true);
+            },
+            error: function (xhr, status, error) {
+                // Handle any errors that occur during the request
+                console.error("Error: " + error);
+                alert("Something went wrong!");
+            }
+
+        });
+    }
+    </script>

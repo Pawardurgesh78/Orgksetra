@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\OrgkSetra.props" />
-</Project>
