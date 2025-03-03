@@ -98,10 +98,9 @@ namespace OrgkSetra.Models
         [Key]
         public int CartId { get; set; }
         public int? SessionId { get; set; }
-        public virtual Cart_Session Session { get; set; }
+        public virtual Cart_Session? Session { get; set; }
         public int ItemId { get; set; } 
         public decimal Quantity { get; set; }
-        public int? OrderStatus { get; set; }
         [NotMapped]
         public virtual ItemDetails? ItemDetails { get; set; } = new ItemDetails();
         public DateTime? CreatedAt { get; set; }
@@ -111,8 +110,19 @@ namespace OrgkSetra.Models
             SessionId = 0;
             ItemId = 0;
             Quantity = 1;
-            OrderStatus = 0;
         }
+    }
+    public class Orders
+    {
+        [Key]
+        public long OrderId { get; set; }
+        public int CustomerId { get; set; }
+        public int SessionId { get; set; }
+        public int DeliveryId { get; set; }
+        public int OrderStatus { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
+
     }
     public static class OrderStatus
     {

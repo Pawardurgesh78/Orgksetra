@@ -17,6 +17,7 @@ namespace OrgkSetra.Data
         public DbSet<Cart_Session> Cart_Session {  get; set; }
         public DbSet<CartItem> CartItems { get;  set; }
         public DbSet<DeliveryAddress> DeliveryAddress { get; set; }   
+        public DbSet<Orders> Orders { get; set; }   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CartItem>().HasOne(b => b.Session)

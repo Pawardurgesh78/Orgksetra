@@ -13,6 +13,7 @@
    @*  <link rel="stylesheet" href="~/Assets//ProductCss/ProductDetails.css" /> *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>    
@@ -24,7 +25,7 @@
             </p>
               <p class="cart-logout">
                 <a class="text-dark btn btn-outline-danger" id="logoutbtn"><i class="fa-solid fa-right-from-bracket"></i></a>
-            <a class="nav-link cart text-dark" asp-controller="Cart" asp-action="View_Cart"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                <a class="nav-link cart text-dark" asp-controller="Cart" asp-action="Add_Cart"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
             </p>
               </div>
 

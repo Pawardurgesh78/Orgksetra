@@ -1,0 +1,46 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+    /*min-height: 100vh;*/
+    height: 100vh;
+    flex-grow:1;
+}
+.container{
+    text-align:center;
+    
+}
+h3{
+    text-align:center;
+    margin-top:4rem;
+    font-family:Arial;
+    font-weight:bold;
+}
+.orderDetails{
+    height:25rem;
+    width:55rem;
+    border:1px solid violet;
+    text-align:center;
+    margin-top: 3rem ;
+    margin-bottom:5rem;
+    overflow:scroll;
+   
+    
+
+}
+.img-food {
+    height: 100% !important;
+    width: auto;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.imagediv {
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin-left: 3rem;
+}

@@ -5,19 +5,20 @@ using Orgksetra.ViewModel;
 using OrgkSetra.Data;
 using OrgkSetra.Models;
 using OrgkSetra.Repository;
+using System.Security.Principal;
 using System.Transactions;
 //using System.Web.Http;
 
 namespace OrgkSetra.Controllers
 {
-  //  [Authorize]
+    //  [Authorize]
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly ApiService _apiService;
         private readonly CartDbContext _cartdb;
         private readonly ManagerCartItem _manageCartItem;
-
+        protected static int deliveryId;
         // CartController Constructor
         public CartController(ApplicationDbContext context, ApiService apiservice, CartDbContext cartDb, ManagerCartItem manageCartItem)
         {
@@ -40,7 +41,7 @@ namespace OrgkSetra.Controllers
         }
 
         // GET: CartController/Create
-        public async Task<ActionResult> Add_Cart(int id)
+        public async Task<ActionResult> Add_To_Cart(int id)
         {
             try
             {
@@ -48,42 +49,47 @@ namespace OrgkSetra.Controllers
                 using (TransactionScope Ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     int customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));  //Here we are assuming that customerId will not be a zero or null
-                    Cart_Session? Cust_Session = (from session in _cartdb.Cart_Session where session.CustomerId == customerId select session).FirstOrDefault();
-                    ItemDetails? itemAdded = await _apiService.GetItemDetails(id);
-                   
-                    if (Cust_Session == null)
+                    if (customerId > 0)
                     {
-                        Cust_Session = new Cart_Session { CustomerId = customerId, CreateAt = DateTime.Now, ModifiedAt = DateTime.Now, Total = itemAdded.ItemPrice };
-                        await _cartdb.Cart_Session.AddAsync(Cust_Session);
-                        await _cartdb.SaveChangesAsync();
-                        cartItem.SessionId = Cust_Session.SessionId;
+                        Cart_Session? Cust_Session = (from session in _cartdb.Cart_Session where session.CustomerId == customerId select session).FirstOrDefault();
+                        ItemDetails? itemAdded = await _apiService.GetItemDetails(id);
+
+                        if (Cust_Session == null)
+                        {
+                            Cust_Session = new Cart_Session { CustomerId = customerId, CreateAt = DateTime.Now, ModifiedAt = DateTime.Now, Total = itemAdded.ItemPrice };
+                            await _cartdb.Cart_Session.AddAsync(Cust_Session);
+                            await _cartdb.SaveChangesAsync();
+                            cartItem.SessionId = Cust_Session.SessionId;
+                        }
+                        else
+                        {
+
+                            cartItem.SessionId = Cust_Session.SessionId;
+                            Cust_Session.Total += itemAdded.ItemPrice;
+                        }
+                        var ItemPresent = _cartdb.CartItems.Where(item => item.ItemId == id && item.SessionId == Cust_Session.SessionId);
+                        if (!ItemPresent.Any())
+                        {
+                            ViewBag.Total = Cust_Session.Total;
+                            cartItem.ItemId = id;
+                            cartItem.CreatedAt = DateTime.Now;
+                            cartItem.ModifiedAt = DateTime.Now;
+                            await _cartdb.CartItems.AddAsync(cartItem);
+                            await _cartdb.SaveChangesAsync();
+                        }
                     }
                     else
                     {
-                        
-                            cartItem.SessionId = Cust_Session.SessionId;
-                            Cust_Session.Total += itemAdded.ItemPrice;
+                        throw new Exception();
                     }
-                var ItemPresent = _cartdb.CartItems.Where(item => item.ItemId == id && item.SessionId == Cust_Session.SessionId);
-                if (!ItemPresent.Any())
-                {
-                    ViewBag.Total = Cust_Session.Total;
-                    cartItem.ItemId = id;
-                    cartItem.OrderStatus = OrderStatus.OrderPending;
-                    cartItem.CreatedAt = DateTime.Now;
-                    cartItem.ModifiedAt = DateTime.Now;
-                    await _cartdb.CartItems.AddAsync(cartItem);
-                    await _cartdb.SaveChangesAsync();
+                    Ts.Complete();
                 }
 
-                    Ts.Complete();
-              }
-
-                //TO display cartItem values in cart
+                //TO display cartItem values in cart    
                 IEnumerable<CartItem>? cartItems = _cartdb.CartItems.Where(c => c.SessionId == cartItem.SessionId).ToList();
                 foreach (var item in cartItems)
                 {
-                    item.ItemDetails = await _apiService.GetItemDetails(item.ItemId);
+                    item.ItemDetails =  await _apiService.GetItemDetails(item.ItemId);
                 }
 
                 TempData["SessionId"] = cartItem.SessionId;
@@ -95,8 +101,8 @@ namespace OrgkSetra.Controllers
             }
             return NotFound();
         }
-      
-        public async Task<ActionResult> View_Cart()
+
+        public async Task<ActionResult> Add_Cart()
         {
             IEnumerable<ItemDetails>? itemDetails = null;
             IEnumerable<CartItem>? cartItems = null;
@@ -117,9 +123,9 @@ namespace OrgkSetra.Controllers
                     }
                 }
             }
-            return View("Add_Cart", cartItems); ;
+            return View(cartItems); ;
         }
-      
+
         public async Task<ActionResult> Delete_Item(int? id)
         {
 
@@ -142,7 +148,7 @@ namespace OrgkSetra.Controllers
                             total = cartItem.Session.Total.ToString();
                             _cartdb.CartItems.Remove(cartItem);
                         }
-                        
+
                     }
                     await _cartdb.SaveChangesAsync();
                     //Getting CartItems to display updated cart item list
@@ -157,7 +163,7 @@ namespace OrgkSetra.Controllers
                     }
                     Ts.Complete();
                     //   return Json(new { success = true, total = total, cartItems = cartItems } );
-                    return RedirectToAction("View_Cart");                   //temporary reloading entire page
+                    return RedirectToAction("Add_Cart");                   //temporary reloading entire page
                 }
             }
             catch (Exception ex)
@@ -166,9 +172,9 @@ namespace OrgkSetra.Controllers
                 return NotFound();
             }
         }
-        public async Task<ActionResult> UpdateCartItemQty(int itemid, int itemqty) 
+        public async Task<ActionResult> UpdateCartItemQty(int itemid, int itemqty)
         {
-            string CartTotal = string.Empty; 
+            string CartTotal = string.Empty;
             try
             {
                 int customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));  //Here we are assuming that customerId will not be a zero or null
@@ -184,7 +190,7 @@ namespace OrgkSetra.Controllers
                     CartItem.Quantity = itemqty;
                     _cartdb.SaveChanges();
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -198,12 +204,12 @@ namespace OrgkSetra.Controllers
             try
             {
                 int customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));
-                var SessionId = _cartdb.Cart_Session.Where(i => i.CustomerId == customerId).Select(i=> i.SessionId).FirstOrDefault();
-                if(SessionId > 0)
+                var SessionId = _cartdb.Cart_Session.Where(i => i.CustomerId == customerId).Select(i => i.SessionId).FirstOrDefault();
+                if (SessionId > 0)
                 {
                     var deliveryAddress = _cartdb.DeliveryAddress.Where(i => i.SessionId == SessionId).ToList();
-                    if(deliveryAddress != null)
-                    return Json(new { success = true, deliveryAddress = deliveryAddress });
+                    if (deliveryAddress != null)
+                        return Json(new { success = true, deliveryAddress = deliveryAddress });
                 }
             }
             catch (Exception)
@@ -235,15 +241,73 @@ namespace OrgkSetra.Controllers
             }
             return Json(new { success = false });
         }
+        [HttpGet]
+        public async Task<ActionResult> LoadOrderSummary() 
+        {
+           
+            int customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId")); 
+            //Get Customer Cart session 
+            Cart_Session? Cust_Session = (from session in _cartdb.Cart_Session where session.CustomerId == customerId select session).FirstOrDefault();
+            var cartItems = _cartdb.CartItems.Where(c => c.SessionId == Cust_Session.SessionId).ToList();
 
+            //Get item info in item's dto to show in order details page
+            List<Items_dto> items_Dto = new List<Items_dto>();
+            
+            foreach (var item in cartItems)
+            {
+                var items = new Items_dto();
+                items.CartId = item.CartId; 
+                items.Quantity = item.Quantity; 
+                items.ItemId = item.ItemId; 
+                items.ItemDetails = await _apiService.GetItemDetails(item.ItemId);
+                items.ImgSrc = "data:image/png;base64," + Convert.ToBase64String(items.ItemDetails.ImageData);
+                items_Dto.Add(items);
+            }
 
-        //[HttpPost]
-        //public ActionResult CheckOutItems()
-        //{
+           return Json(new {success = true, items= items_Dto, total=Cust_Session.Total});
+      //      return StatusCode(200, new { success = false, message = "An internal server error occurred.", items = cartItems, total = Cust_Session.Total });
+        }
+     
+        public ActionResult OrderSummary(string id)
+        {
+            deliveryId = Convert.ToInt32(id);
+            return View();
+          
+        }
+        [HttpPost]
+        public ActionResult PlaceOrder()
+        {
+            try
+            {
+                if (deliveryId > 0)
+                {
+                    int customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));  //Here we are assuming that customerId will not be a zero or null
+                    if (customerId > 0)
+                    {
+                        Cart_Session? Cust_Session = (from session in _cartdb.Cart_Session where session.CustomerId == customerId select session).FirstOrDefault();
+                        Orders order = new Orders
+                        {
+                            CustomerId = customerId,
+                            SessionId = Cust_Session.SessionId,
+                            DeliveryId = deliveryId,
+                            OrderStatus = OrderStatus.OrderPending,
+                            CreatedAt = DateTime.Now,
+                            ModifiedAt = DateTime.Now,
+                            
+                        };
+                        _cartdb.Orders.Add(order);
+                        _cartdb.SaveChanges();
+                        return Json(new { success = true });
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
-        //}
-
-
+                throw;
+            }
+            return Json(new { success = false });
+        }
 
 
     }

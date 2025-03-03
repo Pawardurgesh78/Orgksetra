@@ -1,0 +1,128 @@
+﻿@using Orgksetra.ViewModel
+@{
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+
+<html>
+    <head>
+    <link rel="stylesheet" href="~/css/OrderDetails.css" type="text/css" />
+   
+    <style>
+        .lbl{
+            font-size:1.0rem; 
+            margin:1rem 0 0 3rem;
+            display:none;
+            
+        }
+    </style>
+    </head>
+    <body>
+        <div>
+            <h3>Order Summary</h3>
+            <!--Item details-->
+            <div class="orderDetails container">
+@*               <div class='d-flex'>
+                <div class="imagebox lbl">
+                    <img src="" id="itemImg" alt="item" class="img-food" />
+                </div>
+                <label class="lbl">Item Name: </label>
+                <label class="lbl" id="itemName_lbl"></label>
+            <label class="lbl">Item Quantity: </label>
+            <label class="lbl" id="itemQty_lbl"></label>
+            </div>
+ *@
+
+
+            @*       <img src="data:image/png;base64,@Convert.ToBase64String(item.ItemDetails.ImageData)" alt="Model.ItemName" class="img-food" /> *@
+
+
+            <div id="items_div"></div>
+
+
+
+      <!--total and payment-->
+      <div class="mt-5 lbl" style="float:inline-start">
+          <label>Total: </label>
+                <label id="total_lbl" style="margin-right:1rem;"></label>
+                <label>Payment mode: </label>
+                <label>Cash</label>
+                <button class="btn btn-outline-success" style="margin:0 0 0 5rem; text-align:center" onclick="placeOrder()">Place Order</button>
+
+            </div>
+            </div>
+
+        <!--BooStrap modal-->
+        <div class="modal fade" id="successModal" data-bs-backdrop="static"  tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Order Placed Successfully!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="redirectToItems()">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+<script>
+    loadData();
+    function loadData() {
+
+
+        $.ajax({
+            url: '/Cart/LoadOrderSummary',
+            type:'get',
+            success: (response) => {    
+                console.log(response.items)
+                $('#total_lbl').text("₹" + response.total);
+                $('#itemName_lbl').text();
+                $('#itemQty_lbl').text(response.items.Quantity);
+                //get list of cart items
+                var itemdetails = ``;
+                response.items.forEach(i => { 
+                 itemdetails+= ` <div class='d-flex align-items-center'>
+                        <div class="imagediv">
+                      <img src="${i.imgSrc}" id="itemImg" alt="item" class="img-food " />
+                    </div>
+                        <label class="lbl">Item Name: ${i.itemDetails.itemName}</label>
+                        <label class="lbl">Item Quantity: ${i.quantity} ${i.itemDetails.itemUnit} </label>
+                                     <label class="lbl">Item Price: ₹${i.itemDetails.itemPrice}</label>
+                </div>
+        `  
+               
+                })
+
+                $('#items_div').html(itemdetails);
+                $('.lbl').show();
+
+            }
+
+        })
+    }
+    function placeOrder(){
+        axios.post('/Cart/PlaceOrder')
+
+            .then(function (response) {
+                if (response.data.success) {
+                    //show modal box
+                    $('#successModal').modal('show');
+
+                }else{
+                    //show modal box
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    function redirectToItems() {
+        window.location = '@Url.Action("GetItems", "Cust_Item")';
+        ('#successModal').modal('hide');
+    }
+</script>

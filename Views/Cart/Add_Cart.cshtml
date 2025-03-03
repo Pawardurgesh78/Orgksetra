@@ -16,34 +16,37 @@
         {
             <div class="col-md-7">
                 <div id="getItems">
-                @foreach (var item in Model)
-                {
-                    if (item.ItemDetails != null)
+                    @foreach (var item in Model)
                     {
-                        
-                        <div class="itembox">
-                            <div class="imagediv">
-                                @if (item.ItemDetails.ImageData != null)
-                                {
-                                    <img src="data:image/png;base64,@Convert.ToBase64String(item.ItemDetails.ImageData)" alt="Model.ItemName" class="img-food" />
-                                }
-                                else
-                                {
-                                    <img src="" class="img-food" alt="item.ItemName" />
-                                }
-                            </div>
-                            <p>₹@item.ItemDetails.ItemPrice</p>
-                            @*                             <a href="#" id="Addqty" class="plusMinus" onclick="addqty()">+</a>
-                    *@                            <p id="qty"> <input type="number" value="@Convert.ToInt32(@item.Quantity)" id="qtyinp" onchange="qtychangedValidation(event, @item.ItemDetails.ItemQuantity),onqtychange(event, @item.ItemId)" onkeydown="isNumberKey(event)" class="form-control" pattern="^[0-9]+" required />&nbsp; <b>Qty</b></p>
-                            @*                             <a href="#" onclick="reduceQty()" class="plusMinus" id="Reduceqty">-</a>
-                *@                            <p> Item Catagory: @item.ItemDetails.ItemType</p>
+                        if (item.ItemDetails != null)
+                        {
+
+                            <div class="itembox">
+                                <div class="imagediv">
+                                    @if (item.ItemDetails.ImageData != null)
+                                    {
+                                        <img src="data:image/png;base64,@Convert.ToBase64String(item.ItemDetails.ImageData)" alt="Model.ItemName" class="img-food" />
+                                    }
+                                    else
+                                    {
+                                        <img src="" class="img-food" alt="item.ItemName" />
+                                    }
+                                </div>
+                                <p>₹@item.ItemDetails.ItemPrice</p>
+                                @*                             <a href="#" id="Addqty" class="plusMinus" onclick="addqty()">+</a>                    *@
+                            
+                                <p id="qty"> <input type="number" value="@Convert.ToInt32(@item.Quantity)" id="qtyinp" onchange="qtychangedValidation(event, @item.ItemDetails.ItemQuantity),onqtychange(event, @item.ItemId)" onkeydown="isNumberKey(event)" class="form-control" pattern="^[0-9]+" required />&nbsp; <b>Qty</b></p>
+                                <p>@item.ItemDetails.ItemUnit</p>
+                              
+                                @*                             <a href="#" onclick="reduceQty()" class="plusMinus" id="Reduceqty">-</a>       *@
+                                <p> Item Catagory: @item.ItemDetails.ItemType</p>
                                 <a href="@Url.Action("Delete_Item","Cart", new {id = item.CartId})" class="cursor-pointer">
-                                <i class="fa-solid fa-trash text-dark text-hover-danger"></i>
-                            </a>
-                        </div>
-                     
+                                    <i class="fa-solid fa-trash text-dark text-hover-danger"></i>
+                                </a>
+                            </div>
+
+                        }
                     }
-                }
                 </div>
             </div>
 
@@ -104,6 +107,7 @@
             </div>
         </div>
     </div>
+   
 </body>
 </html>
 <script>
@@ -139,31 +143,43 @@
             });
     }
 
-// On checkout button click 
+    // On checkout button click
     const button = document.getElementById("checkoutItem_btn");
     button.addEventListener('click', function () {
         let deliveryId = 0;
         //checking for delivery address is selected or not
         var delivery = document.getElementsByName("DeliveryId");
         let radiovalue = 0;
-        
+
         delivery.forEach(e => {
             if (e.checked) {
                 radiovalue = 1;
                 deliveryId = e.value;
-              
+
             }
-        }
-        )
+        });
+
+
         if (radiovalue == 0) {
             alert("please select delivery address")
-        }else{
+        } else {
             if (deliveryId > 0) {
-              //   axios.get('/Cart/CheckOutItems')
-            }
-        }
-        //End Delivery Address validation
+                // //    window.location = '/Cart/OrderSummary?id=' + deliveryId
+                // axios.get('/Cart/OrderSummary', {
+                //     params: {
+                //         id: deliveryId,
+                //     }
+                // }).then(function (response) {
 
-        
+                    window.location = '/Cart/OrderSummary?id=' + deliveryId
+             //   })
+
+               
+
+            }
+            //End Delivery Address validation
+
+
+        };
     });
 </script>
