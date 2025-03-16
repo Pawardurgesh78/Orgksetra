@@ -12,7 +12,7 @@
             font-size:1.0rem; 
             margin:1rem 0 0 3rem;
             display:none;
-            
+            width:30%;
         }
     </style>
     </head>
@@ -41,8 +41,8 @@
 
 
       <!--total and payment-->
-      <div class="mt-5 lbl" style="float:inline-start">
-          <label>Total: </label>
+      <div class="mt-5" style="float:inline-start">
+          <label style="margin-left:3rem">Total: </label>
                 <label id="total_lbl" style="margin-right:1rem;"></label>
                 <label>Payment mode: </label>
                 <label>Cash</label>
@@ -56,7 +56,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Order Status</h5>
                     </div>
                     <div class="modal-body">
                         <p>Order Placed Successfully!</p>
@@ -90,9 +90,9 @@
                         <div class="imagediv">
                       <img src="${i.imgSrc}" id="itemImg" alt="item" class="img-food " />
                     </div>
-                        <label class="lbl">Item Name: ${i.itemDetails.itemName}</label>
-                        <label class="lbl">Item Quantity: ${i.quantity} ${i.itemDetails.itemUnit} </label>
-                                     <label class="lbl">Item Price: ₹${i.itemDetails.itemPrice}</label>
+                        <label class="lbl"> ${i.itemDetails.itemName}</label>
+                        <label class="lbl"> ${i.quantity} ${i.itemDetails.itemUnit} </label>
+                                     <label class="lbl"> ₹${i.itemDetails.itemPrice}</label>
                 </div>
         `  
                
@@ -115,6 +115,7 @@
 
                 }else{
                     //show modal box
+                    alert("Order Cannot be placed")
                 }
             })
             .catch(function (error) {

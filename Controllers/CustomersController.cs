@@ -15,10 +15,10 @@ namespace OrgkSetra.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CartDbContext _context;
         
 
-        public CustomersController(ApplicationDbContext context)
+        public CustomersController(CartDbContext context)
         {
             _context = context;
         }

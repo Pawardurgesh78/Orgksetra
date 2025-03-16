@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<ApiService>();
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<CartDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CartConnection")));
+builder.Services.AddDbContext<OrgksetraAdmin>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AdminConnection")));
 builder.Services.AddScoped<ICartItemRepository, ManagerCartItem>();
 builder.Services.AddScoped<ManagerCartItem>();
 builder.Services.AddSession(options =>

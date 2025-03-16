@@ -21,13 +21,10 @@ namespace OrgkSetra.Repository
             {
                 List<CartItem>? cartItems = null;
 
-                //  int customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));  //Here we are assuming that customerId will not be a zero or null
-                Cart_Session? Cust_Session = (from session in _cartdb.Cart_Session where session.CustomerId == customerId select session).FirstOrDefault();
+                Cart_Session? Cust_Session = (from session in _cartdb.Cart_Session where session.CustomerId == customerId && session.Session_status == 0 select session).FirstOrDefault();
                 if (Cust_Session != null)
                 {
-                    //  TempData["SessionId"] = Cust_Session.SessionId;
                     CartItem cartItem = new CartItem();
-                    //    ViewBag.Total = Cust_Session.Total;
                     cartItems = _cartdb.CartItems.Where(c => c.SessionId == Cust_Session.SessionId).ToList();
 
                 }

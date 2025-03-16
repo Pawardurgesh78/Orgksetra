@@ -11,13 +11,11 @@ namespace OrgkSetra.Controllers
     public class Cust_ItemController : Controller
     {
         private readonly ApiService _apiService;
-        private readonly ApplicationDbContext _context; 
         private readonly IMemoryCache memoryCache;
-        public Cust_ItemController(ApiService apiService, IMemoryCache cache, ApplicationDbContext context)
+        public Cust_ItemController(ApiService apiService, IMemoryCache cache)
         {
             _apiService = apiService;
             memoryCache = cache ?? throw new ArgumentNullException(nameof(cache));
-            _context = context;
         }
         public async Task<IActionResult> Index()
         {

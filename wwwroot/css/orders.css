@@ -1,0 +1,32 @@
+﻿.imagediv {
+    height: 3rem;
+    width: 3rem;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.img-food {
+    height: 100% !important;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.orders {
+    height: 5rem;
+    width: 100rem;
+    border: 1px solid red;
+    font-size:12px;
+    margin:1rem 0 0 0;
+    text-align:center
+}
+
+.lbl {
+    font-size: 0.95rem;
+    margin: 1rem 0 0 2rem;
+    font-family:Arial;
+    width:30%;
+}
+

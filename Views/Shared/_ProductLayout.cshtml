@@ -8,26 +8,28 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-   @*  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+    @*  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/OrgkSetra.styles.css" asp-append-version="true" />
-   @*  <link rel="stylesheet" href="~/Assets//ProductCss/ProductDetails.css" /> *@
+    @*  <link rel="stylesheet" href="~/Assets//ProductCss/ProductDetails.css" /> *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <header>    
-            <div class="navbar-org">
+    <header>
+        <div class="navbar-org">
             <a asp-action="GetItems" asp-controller="Cust_Item"><img class="logo" width="230rem" src="~/Assets/OrgLogo.png" alt="logo" /></a>
             <p>
-               <input type="text" class="form-control searchbox" placeholder="Search" />
+                <input type="text" class="form-control searchbox" placeholder="Search" />
                 <a class="btn btn-outline-success">Search</a>
+            <span style="width:70%; margin-left:3rem;">  <a class="nav-link cart text-dark" id="MyOrders" asp-action="Cust_Orders" asp-controller="Cust_Orders">My Orders</a></span>
             </p>
-              <p class="cart-logout">
+           
+            <p class="cart-logout">
                 <a class="text-dark btn btn-outline-danger" id="logoutbtn"><i class="fa-solid fa-right-from-bracket"></i></a>
                 <a class="nav-link cart text-dark" asp-controller="Cart" asp-action="Add_Cart"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
             </p>
-              </div>
+        </div>
 
     </header>
     <div class="container">
@@ -37,41 +39,43 @@
         </main>
     </div>
     <footer class="footer">
-    <div>
-        <ul class="footer-ul">
-            <li class="foot-address">
-                <p>  Address </p>
-                <a>26B Patanjali Nagar</a>
-                <a>Taluka : Shahada</a>
-                <a>District : Nandurbar</a>
-            </li>
-            <li class="foot-address">
-                <p>  Address </p>
-                <a>26B Patanjali Nagar</a>
-                <a>Taluka : Shahada</a>
-                <a>District : Nandurbar</a>
-            </li>
-            <li class="foot-address">
-                <p>  Address </p>
-                <a>26B Patanjali Nagar</a>
-                <a>Taluka : Shahada</a>
-                <a>District : Nandurbar</a>
-            </li>
-            <li class="foot-address">
-                <p>  Address </p>
-                <a>26B Patanjali Nagar</a>
-                <a>Taluka : Shahada</a>
-                <a>District : Nandurbar</a>
-            </li>
+        <div>
+            <ul class="footer-ul">
+                <li class="foot-address">
+                    <p>  Address </p>
+                    <a>26B Patanjali Nagar</a>
+                    <a>Taluka : Shahada</a>
+                    <a>District : Nandurbar</a>
+                </li>
+                <li class="foot-address">
+                    <p>  Address </p>
+                    <a>26B Patanjali Nagar</a>
+                    <a>Taluka : Shahada</a>
+                    <a>District : Nandurbar</a>
+                </li>
+                <li class="foot-address">
+                    <p>  Address </p>
+                    <a>26B Patanjali Nagar</a>
+                    <a>Taluka : Shahada</a>
+                    <a>District : Nandurbar</a>
+                </li>
+                <li class="foot-address">
+                    <p>  Address </p>
+                    <a>26B Patanjali Nagar</a>
+                    <a>Taluka : Shahada</a>
+                    <a>District : Nandurbar</a>
+                </li>
             </ul>
-    </div>
+        </div>
         <div class="container copyrights">
-            <div style="text-align:center; bottom:0;">Designed and Developed by 	&regPawar Enterprises
-               <p> &copy; 2024 - OrgkSetra -
-                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div style="text-align:center; bottom:0;">
+                Designed and Developed by 	&regPawar Enterprises
+                <p>
+                    &copy; 2024 - OrgkSetra -
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
-         
-       
+
+
         </div>
     </footer>
 
@@ -113,7 +117,7 @@
             windows.histry
         }
     </script>
-  
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

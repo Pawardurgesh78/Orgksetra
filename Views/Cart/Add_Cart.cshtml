@@ -145,41 +145,43 @@
 
     // On checkout button click
     const button = document.getElementById("checkoutItem_btn");
-    button.addEventListener('click', function () {
-        let deliveryId = 0;
-        //checking for delivery address is selected or not
-        var delivery = document.getElementsByName("DeliveryId");
-        let radiovalue = 0;
+    if (button) {
+        button.addEventListener('click', function () {
+            let deliveryId = 0;
+            //checking for delivery address is selected or not
+            var delivery = document.getElementsByName("DeliveryId");
+            let radiovalue = 0;
 
-        delivery.forEach(e => {
-            if (e.checked) {
-                radiovalue = 1;
-                deliveryId = e.value;
+            delivery.forEach(e => {
+                if (e.checked) {
+                    radiovalue = 1;
+                    deliveryId = e.value;
 
-            }
-        });
+                }
+            });
 
 
-        if (radiovalue == 0) {
-            alert("please select delivery address")
-        } else {
-            if (deliveryId > 0) {
-                // //    window.location = '/Cart/OrderSummary?id=' + deliveryId
-                // axios.get('/Cart/OrderSummary', {
-                //     params: {
-                //         id: deliveryId,
-                //     }
-                // }).then(function (response) {
+            if (radiovalue == 0) {
+                alert("please select delivery address")
+            } else {
+                if (deliveryId > 0) {
+                    // //    window.location = '/Cart/OrderSummary?id=' + deliveryId
+                    // axios.get('/Cart/OrderSummary', {
+                    //     params: {
+                    //         id: deliveryId,
+                    //     }
+                    // }).then(function (response) {
 
                     window.location = '/Cart/OrderSummary?id=' + deliveryId
-             //   })
-
-               
-
-            }
-            //End Delivery Address validation
+                    //   })
 
 
-        };
-    });
+
+                }
+                //End Delivery Address validation
+
+
+            };
+        });
+    }
 </script>

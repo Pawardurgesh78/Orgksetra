@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "_ProductLayout";
+}
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+    <link rel="stylesheet" href="~/css/Orders.css" type="text/css" />
+
+    </head>
+    <body style="text-align:center">
+    <label class="fw-bold" style="font-size:1.5rem; margin-top:10px">My Orders</label>
+    <div id="items_div"></div>
+    </body>
+    </html>
+    <script>
+    loadData();
+    function loadData() {
+
+
+        $.ajax({
+            url: '/Cust_Orders/MyOrders',
+            type: 'get',
+            success: (response) => {
+                console.log(response.items)
+          
+                //get list of cart items
+                var itemdetails = ``;
+                console.log(response.orderedItems);
+                response.orderedItems.forEach(i => {
+                    itemdetails += ` <div class='d-flex align-items-center mt-3'>
+                            <div class="imagediv">
+                          <img src="${i.item.itemDetails.imageName}" id="itemImg" alt="item" class="img-food " />
+                        </div>
+                            <label class="lbl"> ${i.item.itemDetails.itemName}</label>
+                                    <label class="lbl">${i.item.quantity} ${i.item.itemDetails.itemUnit} </label>
+                                         <label class="lbl">₹${i.item.buyPrice}</label>
+                                             <label class="lbl">${i.order.order_Status}</label>
+
+                    </div>
+            `
+
+                })
+
+                $('#items_div').html(itemdetails);
+                $('.lbl').show();
+
+            }
+
+        })
+    }
+    </script>

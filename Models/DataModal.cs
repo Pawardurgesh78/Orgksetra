@@ -34,7 +34,7 @@ namespace OrgkSetra.Models
         }
 
     }
-    [NotMapped]
+ //   [NotMapped]
     public class Item
     {
         [Key]
@@ -70,10 +70,12 @@ namespace OrgkSetra.Models
         public decimal Total { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime ModifiedAt { get; set; }
+        public int Session_status { get; set; } 
         public Cart_Session()
         {
             CustomerId = 0;
             Total = 0;
+            Session_status = 0  ;                   // session_status (0->Live and 1-> Completed )
         }
         public ICollection<CartItem>? cartItems { get; set; }
     }
@@ -81,7 +83,7 @@ namespace OrgkSetra.Models
     {
         [Key]
         public int DeliveryId { get; set; }
-        public int SessionId { get; set; }
+        public int CustomerId { get; set; }
         public string Address { get; set; }
         public string MobileNo { get; set; }
         public string Pincode { get; set; }
@@ -101,6 +103,7 @@ namespace OrgkSetra.Models
         public virtual Cart_Session? Session { get; set; }
         public int ItemId { get; set; } 
         public decimal Quantity { get; set; }
+        public decimal BuyPrice { get; set; }   
         [NotMapped]
         public virtual ItemDetails? ItemDetails { get; set; } = new ItemDetails();
         public DateTime? CreatedAt { get; set; }
@@ -120,8 +123,11 @@ namespace OrgkSetra.Models
         public int SessionId { get; set; }
         public int DeliveryId { get; set; }
         public int OrderStatus { get; set; }
+        [NotMapped]
+        public string Order_Status { get; set; } = string.Empty;
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
+
 
     }
     public static class OrderStatus

@@ -137,23 +137,25 @@
 </html>
 <script>
     function AddToCart(e,id) {
-        $.ajax({
-            url: '/Cart/Add_To_Cart', // Example API URL
-            type: 'Post',  // Request type (GET, POST, etc.)
-            data: {
-                id: id,
-            },
-            dataType: 'json',  // Expected response type
-            success: function (response) {
-                $(e.target).text('Added');
-                $(e.target).attr('disabled', true);
-            },
-            error: function (xhr, status, error) {
-                // Handle any errors that occur during the request
-                console.error("Error: " + error);
-                alert("Something went wrong!");
-            }
+        if (id > 0) {
+            $.ajax({
+                url: '/Cart/Add_To_Cart', // Example API URL
+                type: 'Post',  // Request type (GET, POST, etc.)
+                data: {
+                    id: id,
+                },
+                dataType: 'json',  // Expected response type
+                success: function (response) {
+                    $(e.target).text('Added');
+                    $(e.target).attr('disabled', true);
+                },
+                error: function (xhr, status, error) {
+                    // Handle any errors that occur during the request
+                    console.error("Error: " + error);
+                    alert("Something went wrong!");
+                }
 
-        });
+            });
+        }
     }
 </script>

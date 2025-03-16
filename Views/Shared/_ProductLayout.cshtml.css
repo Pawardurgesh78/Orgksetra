@@ -20,8 +20,6 @@ a.navbar-brand {
 html{
     width:100%;
     height:100vh;
-    margin:0px;
-    padding:0px;
 }
 body {
     display: flex;
@@ -33,6 +31,9 @@ body {
         flex-grow: 1 !important;
        
     }
+main {
+    min-height:100vh;
+}
 
 /*    body .container {
         flex-grow: 1 !important; 
